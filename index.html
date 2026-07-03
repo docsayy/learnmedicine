@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Learn Medicine | Coming Soon</title>
+
+  <meta name="description" content="A medical learning website under construction, focused on literature review, clinical reasoning, and high-yield medicine topics." />
+
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --accent: #0f766e;
+      --accent-dark: #115e59;
+      --border: #e2e8f0;
+      --soft: #f0fdfa;
+      --shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, #ccfbf1 0, transparent 35%),
+        radial-gradient(circle at bottom right, #e0f2fe 0, transparent 35%),
+        var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1100px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero {
+      padding: 20px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--soft);
+      color: var(--accent-dark);
+      border: 1px solid #99f6e4;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 6vw, 4.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 20px;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .subtitle {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 13px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 10px 25px rgba(15, 118, 110, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 720px;
+    }
+
+    .feature {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      backdrop-filter: blur(12px);
+    }
+
+    .feature strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .card-header {
+      margin-bottom: 24px;
+    }
+
+    .card-header h2 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .card-header p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .topic-list {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    .topic {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+    }
+
+    .topic span {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .topic small {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .progress-box {
+      background: var(--soft);
+      border: 1px solid #99f6e4;
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .progress-box strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--accent-dark);
+    }
+
+    .progress-bar {
+      height: 10px;
+      background: #ccfbf1;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .progress-fill {
+      width: 65%;
+      height: 100%;
+      background: var(--accent);
+      border-radius: 999px;
+    }
+
+    .progress-box p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    footer {
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 850px) {
+      .page {
+        grid-template-columns: 1fr;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        text-align: center;
+      }
+
+      .subtitle,
+      .features {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .actions {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <section class="hero">
+      <div class="badge">📚 Under Construction</div>
+
+      <h1>
+        Learn Medicine through <span>review of literature</span>.
+      </h1>
+
+      <p class="subtitle">
+        A growing medical education platform focused on high-yield clinical topics,
+        evidence-based learning, literature review, bedside reasoning, and practical
+        medicine for students, residents, and clinicians.
+      </p>
+
+      <div class="actions">
+        <a href="#" class="btn btn-primary">Coming Soon</a>
+        <a href="mailto:your-email@example.com" class="btn btn-secondary">Contact Us</a>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <strong>Clinical Reviews</strong>
+          <p>Concise summaries of important medical topics.</p>
+        </div>
+
+        <div class="feature">
+          <strong>Literature Based</strong>
+          <p>Learning guided by studies, guidelines, and reviews.</p>
+        </div>
+
+        <div class="feature">
+          <strong>High-Yield Medicine</strong>
+          <p>Focused on practical bedside decision making.</p>
+        </div>
+      </div>
+
+      <footer>
+        © 2026 Learn Medicine. Evidence-based medical learning.
+      </footer>
+    </section>
+
+    <aside class="card">
+      <div class="card-header">
+        <h2>What we are building</h2>
+        <p>
+          Organized medical articles, clinical pearls, review notes, and literature-based
+          explanations designed for fast learning and deeper understanding.
+        </p>
+      </div>
+
+      <div class="topic-list">
+        <div class="topic">
+          <span>Internal Medicine</span>
+          <small>Core reviews</small>
+        </div>
+
+        <div class="topic">
+          <span>Critical Care</span>
+          <small>ICU topics</small>
+        </div>
+
+        <div class="topic">
+          <span>Infectious Disease</span>
+          <small>Antibiotics & cases</small>
+        </div>
+
+        <div class="topic">
+          <span>Cardiology</span>
+          <small>ECG & ACS</small>
+        </div>
+
+        <div class="topic">
+          <span>Nephrology</span>
+          <small>ABG & electrolytes</small>
+        </div>
+      </div>
+
+      <div class="progress-box">
+        <strong>Website progress</strong>
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+        <p>
+          Articles, references, and clinical review sections are currently being prepared.
+        </p>
+      </div>
+    </aside>
+
+  </main>
+</body>
+</html>
